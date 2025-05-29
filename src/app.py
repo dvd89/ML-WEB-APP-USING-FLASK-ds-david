@@ -13,7 +13,8 @@ app = Flask(__name__)
 knn_model = load(open(r"knn_neighbors-6_algorithm-brute_metric-cosine.sav", "rb"))
 
 
-total_data = pd.read_csv("clean_data.csv")
+total_data = pd.read_csv("clean_data.csv", engine="python")
+
     
 vectorizer = TfidfVectorizer(token_pattern=r'\b\w+\b', lowercase=True)
 matrix = vectorizer.fit_transform(total_data['tags'])
