@@ -14,6 +14,8 @@ knn_model = load(open(r"knn_neighbors-6_algorithm-brute_metric-cosine.sav", "rb"
 
 
 total_data = pd.read_csv("clean_data.csv", engine="python")
+# Elimina filas donde 'tags' sea None o NaN
+total_data = total_data[total_data['tags'].notna()]
 
     
 vectorizer = TfidfVectorizer(token_pattern=r'\b\w+\b', lowercase=True)
